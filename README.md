@@ -1,2 +1,2 @@
 # my-portfolio
-My portfolio website
+Thes repo has demo projects.
