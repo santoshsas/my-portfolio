@@ -1,0 +1,16 @@
+.header-container {
+    background-color: #010307;
+    /*min-height: 100vh;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white
+}
+.logo-container {
+    margin: 1%;
+    
+}
+.logo {
+    background-color: white;
+}
