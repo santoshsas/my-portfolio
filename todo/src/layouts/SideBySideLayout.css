@@ -1,0 +1,24 @@
+.side-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+}
+.menu {
+    text-align: left;
+    align-items:flex-start;
+}
+.menu ul {
+    list-style: none;
+    margin: 1em;
+    padding: 0;
+}
+.menu li {
+    padding: 0.5em;
+}
+.main {
+    margin: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: center;
+}

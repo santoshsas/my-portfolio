@@ -1,0 +1,22 @@
+[
+    {
+        "id": "0",
+        "name": "Task 1",
+        "description": "Just testing task 1",
+        "category": "general",
+        "priority": 1,
+        "assigned_to":"sshahane",
+        "completed_at": "",
+        "completed": true
+    },
+    {
+        "id": "1",
+        "name": "Task 2",
+        "description": "Just testing ...",
+        "category": "general",
+        "priority": 1,
+        "assigned_to":"sshahane",
+        "completed_at": "",
+        "completed": false
+    }
+]
