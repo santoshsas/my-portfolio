@@ -1,20 +1,25 @@
-import { useState, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import service from "../services/TaskService";
 import { getCompletedTasks, getUncompletedTasks } from "../getters/getTasks";
 import { Task } from "../components/Task"
+import { Button } from "../components/Button"
+import { TaskReducer } from "../reducers/TaskReducer";
 import './Todo.css';
 
 
-export const Todo = () => {
-  const [tasks, setTasks] = useState([]);
+export function Todo () {
+  const [state, dispatch] = useReducer(TaskReducer, {tasks: []})
   // Sumulating loading from server
   useEffect(() => {
-    service.getTasksData().then(tasks => setTasks(tasks))
+    service.getTasksData().then(tasks => dispatch({type: 'loadTasks', payload: tasks}))
     }, []);
-
+  
   const clickHandler = ({id, completed})  => {
-    const updatedTasks = tasks.map(task => task.id === id ? { ...task, completed:completed } :  task)
-    setTasks(updatedTasks)
+    dispatch({type: 'updateTask', payload: {id, completed}})
+  }
+
+  const handleCreateTask = (task) => {
+
   }
 
   return (
@@ -22,7 +27,7 @@ export const Todo = () => {
        <div className="uncompleted"> TO DO
         <ul>
                 {
-                getUncompletedTasks(tasks).map(task => (
+                getUncompletedTasks(state.tasks).map(task => (
                     <Task key={task.id} {...task} handleClick={clickHandler}></Task>
                 ))
                 }
@@ -31,10 +36,13 @@ export const Todo = () => {
         <div className="completed"> Completed Tasks
             <ul>
                 {
-                getCompletedTasks(tasks).map(task => (
+                getCompletedTasks(state.tasks).map(task => (
                     <Task key={task.id} {...task} handleClick={clickHandler}></Task>
                 ))}
             </ul>
+        </div>
+        <div className="actions">
+          <Button onClick={handleCreateTask}>Create</Button>
         </div>
     </div>
   );
